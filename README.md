@@ -1,17 +1,16 @@
+#MyLogger
        
-/**
- * Формат записи в файл:
- * {дата} {код уровня логирования} {уровень логирования} {сообщение}
- */
+Класс для записи различных лог событий 
+ 
+Формат записи в файл:
+{дата} {код уровня логирования} {уровень логирования} {сообщение}
 
-/**
- * Компонент для логирования
- */
+#Компонент для логирования
+
 $logger = new Logger\Logger();
 
-/**
- * Логгер который все логи будет писать в файл application.log
- */
+#Логгер который все логи будет писать в файл application.log
+
 $fileLogger = new Logger\FileLogger([
     'is_enabled' => true,
     'filename' => __DIR__ . '/application.log',
@@ -19,9 +18,8 @@ $fileLogger = new Logger\FileLogger([
 
 $logger->addLogger($fileLogger);
 
-/**
- * Логгер который все ошибки будет писать в файл application.error.log
- */
+#Логгер который все ошибки будет писать в файл application.error.log
+
 $logger->addLogger(new Logger\FileLogger([
     'is_enabled' => true,
     'filename' => __DIR__ . '/application.error.log',
@@ -30,9 +28,8 @@ $logger->addLogger(new Logger\FileLogger([
     ],
 ]));
 
-/**
- * Логгер который все информационные логи будет писать в файл application.info.log
- */
+#Логгер который все информационные логи будет писать в файл application.info.log
+
 $logger->addLogger(new Logger\FileLogger([
     'is_enabled' => true,
     'filename' => __DIR__ . '/application.info.log',
@@ -41,11 +38,8 @@ $logger->addLogger(new Logger\FileLogger([
     ],
 ]));
 
-/**
- * Логгер который все debug логи записывает в syslog
- *
- * @see http://php.net/manual/ru/function.syslog.php
- */
+#Логгер который все debug логи записывает в syslog
+
 $logger->addLogger(new Logger\SyslogLogger([
     'is_enabled' => true,
     'levels' => [
@@ -53,9 +47,8 @@ $logger->addLogger(new Logger\SyslogLogger([
     ],
 ]));
 
-/**
- * Логгер который ничего не делает
- */
+#Логгер который ничего не делает
+
 $logger->addLogger(new Logger\NullLogger([
 
 ]));
