@@ -1,12 +1,10 @@
-#MyLogger
-       
-Класс для записи различных лог событий 
+## Класс для записи различных лог событий 
  
 Формат записи в файл:
 {дата} {код уровня логирования} {уровень логирования} {сообщение}
 
-#Компонент для логирования
-
+#### Компонент для логирования
+~~~php
 $logger = new Logger\Logger();
 
 #Логгер который все логи будет писать в файл application.log
@@ -17,8 +15,9 @@ $fileLogger = new Logger\FileLogger([
 ]);
 
 $logger->addLogger($fileLogger);
+~~~
 
-#Логгер который все ошибки будет писать в файл application.error.log
+#### Логгер который все ошибки будет писать в файл application.error.log
 
 $logger->addLogger(new Logger\FileLogger([
     'is_enabled' => true,
